@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Good ending screen" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 413.377
+margin_top = 281.524
+margin_right = 918.377
+margin_bottom = 514.524
+text = "PARABENS, VOCÊ NÃO É ESTUPIDO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
