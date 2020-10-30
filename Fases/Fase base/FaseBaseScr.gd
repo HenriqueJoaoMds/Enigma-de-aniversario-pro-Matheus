@@ -10,7 +10,7 @@ var opacidade = 0
 onready var timer = get_node("Timer")
 onready var mensagemDeErro = get_node("Label2")
 
-func _process(delta):
+func _process(_delta):
 	if acendendo:
 		opacidade += 0.1
 		mensagemDeErro.modulate = Color(1, 1, 1, opacidade)
