@@ -1,37 +1,54 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fases/Botoes base/BotoesBaseScr.gd" type="Script" id=1]
+[ext_resource path="res://Fases/Botoes base/EstiloBotoes.tres" type="Theme" id=2]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.980645, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
 [node name="Botoes base" type="Node2D"]
 script = ExtResource( 1 )
 Resposta = "35"
 VaiPra = "res://GoodEndingScreen.tscn"
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 552, 317.875 )
+scale = Vector2( 0.585938, 692.25 )
+z_index = -100
+texture = SubResource( 5 )
+
 [node name="Button" type="Button" parent="."]
-margin_left = 825.724
-margin_top = 489.254
-margin_right = 940.724
-margin_bottom = 577.254
+margin_left = 896.0
+margin_top = 512.0
+margin_right = 960.0
+margin_bottom = 576.0
+theme = ExtResource( 2 )
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextEdit" type="TextEdit" parent="."]
-margin_left = 478.293
-margin_top = 486.036
-margin_right = 782.293
-margin_bottom = 575.036
+margin_left = 512.0
+margin_top = 512.0
+margin_right = 832.0
+margin_bottom = 577.0
+rect_rotation = 360.0
+theme = ExtResource( 2 )
+text = "asdasd"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="."]
 modulate = Color( 100, 100, 100, 0 )
-margin_left = 585.751
-margin_top = 460.346
-margin_right = 672.751
-margin_bottom = 474.346
+margin_left = 512.0
+margin_top = 488.0
+margin_right = 599.0
+margin_bottom = 502.0
 text = "Caralho, sério"
 __meta__ = {
 "_edit_use_anchors_": false
