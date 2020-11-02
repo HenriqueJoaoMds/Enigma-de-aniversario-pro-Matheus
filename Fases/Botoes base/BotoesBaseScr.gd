@@ -10,6 +10,8 @@ var opacidade : float = 0.0
 onready var timer : Timer = get_node("Timer")
 onready var mensagemDeErro : Label = get_node("Label2")
 
+signal botaoApertado
+
 func _process(_delta):
 	if acendendo:
 		opacidade += 0.1
@@ -30,7 +32,7 @@ func _on_Button_pressed():
 	if !apagando and !acendendo and int(opacidade) == 0:
 		var inputDeTexto : TextEdit = get_node("TextEdit")
 		if inputDeTexto.text == Resposta:
-			get_tree().change_scene(VaiPra)
+			emit_signal("botaoApertado")
 		elif inputDeTexto.text == "":
 			mensagemDeErro.text = "Você é estupido? Essa caixa é um input de texto."
 			acendendo = true

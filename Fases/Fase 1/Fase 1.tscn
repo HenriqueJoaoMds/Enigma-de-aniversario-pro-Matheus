@@ -1,53 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Fases/Fase 1/Fase1Scr.gd" type="Script" id=1]
+[ext_resource path="res://Fases/Botoes base/Botoes base.tscn" type="PackedScene" id=2]
 
 [node name="Fase 1" type="Node2D"]
 script = ExtResource( 1 )
-Resposta = "arrozcomfeijao"
-VaiPra = "res://GoodEndingScreen.tscn"
+
+[node name="Botoes base" parent="." instance=ExtResource( 2 )]
 
 [node name="Label" type="Label" parent="."]
-margin_left = 398.761
-margin_top = 228.144
-margin_right = 528.761
-margin_bottom = 287.144
-text = "A	resposta já está no seu computador"
+margin_left = 440.0
+margin_top = 190.0
+margin_right = 569.0
+margin_bottom = 214.0
+text = "13 + 22"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Button" type="Button" parent="."]
-margin_left = 825.724
-margin_top = 489.254
-margin_right = 940.724
-margin_bottom = 577.254
-text = ">"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextEdit" type="TextEdit" parent="."]
-margin_left = 478.293
-margin_top = 486.036
-margin_right = 782.293
-margin_bottom = 575.036
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-modulate = Color( 100, 100, 100, 0 )
-margin_left = 585.751
-margin_top = 460.346
-margin_right = 672.751
-margin_bottom = 474.346
-text = "Caralho, sério"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
