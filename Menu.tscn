@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MenuScr.gd" type="Script" id=1]
 [ext_resource path="res://Itim-Regular.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,10 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 102
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=4]
@@ -76,6 +80,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="."]
+margin_left = 264.0
+margin_top = 128.0
+margin_right = 761.0
+margin_bottom = 251.0
+custom_fonts/font = SubResource( 5 )
+text = "Você é GAY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite2" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 506.093, 307 )
@@ -84,15 +99,5 @@ texture = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fechandoJogo = SubResource( 4 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = 392.0
-margin_top = 168.0
-margin_right = 432.0
-margin_bottom = 182.0
-text = "bunda"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
 [connection signal="button_up" from="BotaoDeSair" to="." method="_on_BotaoDeSair_button_up"]
