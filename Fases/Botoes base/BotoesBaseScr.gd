@@ -2,15 +2,26 @@ extends Node2D
 
 export var Resposta : String
 export var VaiPra : String
+export var Dica : String
 
 var acendendo : bool = false
 var apagando : bool = false
 var opacidade : float = 0.0
 
+var pediuAjuda : bool = false
+
 onready var timer : Timer = get_node("Timer")
 onready var mensagemDeErro : Label = get_node("Label2")
+onready var opcoesDeAjuda : Control = get_node("OpcoesDeAjuda")
+onready var mensagemDeAjuda : Label = get_node("MensagemDeAjuda")
 
 signal botaoApertado
+signal botaoDeAjudaApertado
+signal negouAjuda
+signal aceitouAjuda
+
+func _ready():
+	mensagemDeAjuda.text = Dica
 
 func _process(_delta):
 	if acendendo:
@@ -26,7 +37,6 @@ func _process(_delta):
 		if int(opacidade) == -1:
 			opacidade = 0
 			apagando = false
-			timer.stop()
 
 func _on_Button_pressed():
 	if !apagando and !acendendo and int(opacidade) == 0:
@@ -34,12 +44,30 @@ func _on_Button_pressed():
 		if inputDeTexto.text == Resposta:
 			emit_signal("botaoApertado")
 		elif inputDeTexto.text == "":
-			mensagemDeErro.text = "Você é estupido? Essa caixa é um input de texto."
+			mensagemDeErro.text = "A caixa de input está vazia."
 			acendendo = true
 		else:
-			mensagemDeErro.text = "Caralho, sério?"
+			mensagemDeErro.text = "Resposta errada."
 			acendendo = true
 
 func _on_Timer_timeout():
-	timer.stop()
+	print("a")
 	apagando = true
+
+func _on_BotaoDeAjuda_button_up():
+	emit_signal("botaoDeAjudaApertado")
+	
+	if pediuAjuda == false:
+		opcoesDeAjuda.show()
+
+func _on_BotaoNao_button_up():
+	emit_signal("negouAjuda")
+
+	opcoesDeAjuda.hide()
+
+func _on_BotaoSim_button_up():
+	emit_signal("aceitouAjuda")
+
+	pediuAjuda = true
+	opcoesDeAjuda.queue_free()
+	mensagemDeAjuda.show()
