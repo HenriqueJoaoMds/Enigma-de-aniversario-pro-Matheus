@@ -9,7 +9,7 @@ var apagando : bool = false
 var opacidade : float = 0.0
 
 var pediuAjuda : bool = false
-var mensagemDeAjudaEstaAparecendo = false
+var mensagemDeAjudaEstaAparecendo : bool = false
 
 onready var timer : Timer = get_node("Timer")
 onready var mensagemDeErro : Label = get_node("Label2")
