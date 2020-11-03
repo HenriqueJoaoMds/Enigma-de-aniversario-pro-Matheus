@@ -77,11 +77,22 @@ __meta__ = {
 }
 
 [node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 506.093, 307 )
 scale = Vector2( 0.531923, 647.072 )
 texture = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fechandoJogo = SubResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 392.0
+margin_top = 168.0
+margin_right = 432.0
+margin_bottom = 182.0
+text = "bunda"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
 [connection signal="button_up" from="BotaoDeSair" to="." method="_on_BotaoDeSair_button_up"]
