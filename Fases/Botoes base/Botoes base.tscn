@@ -11,31 +11,30 @@ offsets = PoolRealArray( 0.980645, 1 )
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 size = 40
 extra_spacing_top = -12
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=9]
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=11]
 extra_spacing_bottom = -7
 font_data = ExtResource( 3 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=9]
 
-[sub_resource type="Animation" id=6]
-resource_name = "AjudaConfirmada"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("OpcoesDeAjuda:rect_position")
 tracks/0/interp = 2
@@ -61,8 +60,7 @@ tracks/1/keys = {
 "values": [ Vector2( -240, 512 ), Vector2( 144, 512 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "AjudaNegada"
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("OpcoesDeAjuda:rect_position")
@@ -77,8 +75,7 @@ tracks/0/keys = {
 "values": [ Vector2( 144, 512 ), Vector2( -72, 512 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "ConfirmarAjuda"
+[sub_resource type="Animation" id=12]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("OpcoesDeAjuda:rect_position")
@@ -110,7 +107,7 @@ margin_top = 512.0
 margin_right = 960.0
 margin_bottom = 576.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -134,7 +131,7 @@ margin_left = 512.0
 margin_top = 488.0
 margin_right = 599.0
 margin_bottom = 502.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 4 )
 text = "Caralho, sério"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -157,7 +154,7 @@ __meta__ = {
 [node name="ConfirmarAjuda" type="Label" parent="OpcoesDeAjuda"]
 margin_right = 184.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 text = "Tem certeza que quer ajuda?"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -167,7 +164,7 @@ __meta__ = {
 margin_top = 24.0
 margin_right = 64.0
 margin_bottom = 60.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Sim"
 
 [node name="BotaoNao" type="Button" parent="OpcoesDeAjuda"]
@@ -176,7 +173,7 @@ margin_top = 24.0
 margin_right = 200.0
 margin_bottom = 60.0
 rect_pivot_offset = Vector2( 36, 0 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 text = "Não"
 
 [node name="MensagemDeAjuda" type="Label" parent="."]
@@ -184,7 +181,7 @@ margin_left = -240.0
 margin_top = 512.0
 margin_right = 112.0
 margin_bottom = 576.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 8 )
 text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 autowrap = true
 clip_text = true
@@ -196,7 +193,7 @@ __meta__ = {
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 24, 336 )
 scale = Vector2( 0.046875, 656 )
-texture = SubResource( 3 )
+texture = SubResource( 9 )
 
 [node name="BotaoDeAjuda" type="Button" parent="."]
 margin_left = 64.0
@@ -211,9 +208,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/AjudaConfirmada = SubResource( 6 )
-anims/AjudaNegada = SubResource( 5 )
-anims/ConfirmarAjuda = SubResource( 4 )
+anims/AjudaConfirmada = SubResource( 10 )
+anims/AjudaNegada = SubResource( 11 )
+anims/ConfirmarAjuda = SubResource( 12 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="button_up" from="OpcoesDeAjuda/BotaoSim" to="." method="_on_BotaoSim_button_up"]
