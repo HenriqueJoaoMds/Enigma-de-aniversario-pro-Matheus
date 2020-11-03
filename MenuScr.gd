@@ -13,3 +13,9 @@ func _ready():
 
 func _on_Button_button_up():
 	get_tree().change_scene("res://Fases/Fase 1/Fase 1.tscn")
+
+func _on_BotaoDeSair_button_up():
+	get_node("AnimationPlayer").play("fechandoJogo")
+
+func quit():
+	get_tree().quit()
