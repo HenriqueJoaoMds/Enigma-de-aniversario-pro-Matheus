@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fases/Botoes base/BotoesBaseScr.gd" type="Script" id=1]
 [ext_resource path="res://Fases/Botoes base/EstiloBotoes.tres" type="Theme" id=2]
@@ -8,6 +8,67 @@ offsets = PoolRealArray( 0.980645, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
+
+[sub_resource type="GradientTexture" id=3]
+
+[sub_resource type="Animation" id=6]
+resource_name = "AjudaConfirmada"
+tracks/0/type = "value"
+tracks/0/path = NodePath("OpcoesDeAjuda:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 144, 512 ), Vector2( -72, 512 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MensagemDeAjuda:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -240, 512 ), Vector2( 144, 512 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "AjudaNegada"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("OpcoesDeAjuda:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 144, 512 ), Vector2( -64, 512 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "ConfirmarAjuda"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("OpcoesDeAjuda:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -64, 512 ), Vector2( 144, 512 ) ]
+}
 
 [node name="Botoes base" type="Node2D"]
 script = ExtResource( 1 )
@@ -58,22 +119,10 @@ __meta__ = {
 wait_time = 2.0
 one_shot = true
 
-[node name="BotaoDeAjuda" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 512.0
-margin_right = 128.0
-margin_bottom = 576.0
-theme = ExtResource( 2 )
-text = "?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="OpcoesDeAjuda" type="Control" parent="."]
-visible = false
-margin_left = 144.0
+margin_left = -64.0
 margin_top = 512.0
-margin_right = 184.0
+margin_right = -24.0
 margin_bottom = 552.0
 theme = ExtResource( 2 )
 __meta__ = {
@@ -103,10 +152,9 @@ rect_pivot_offset = Vector2( 36, 0 )
 text = "Não"
 
 [node name="MensagemDeAjuda" type="Label" parent="."]
-visible = false
-margin_left = 144.0
+margin_left = -240.0
 margin_top = 512.0
-margin_right = 496.0
+margin_right = 112.0
 margin_bottom = 576.0
 text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 autowrap = true
@@ -115,8 +163,29 @@ max_lines_visible = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -472, 336 )
+scale = Vector2( 0.53125, 656 )
+texture = SubResource( 3 )
+
+[node name="BotaoDeAjuda" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 512.0
+margin_right = 128.0
+margin_bottom = 576.0
+theme = ExtResource( 2 )
+text = "?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/AjudaConfirmada = SubResource( 6 )
+anims/AjudaNegada = SubResource( 5 )
+anims/ConfirmarAjuda = SubResource( 4 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="button_up" from="BotaoDeAjuda" to="." method="_on_BotaoDeAjuda_button_up"]
 [connection signal="button_up" from="OpcoesDeAjuda/BotaoSim" to="." method="_on_BotaoSim_button_up"]
 [connection signal="button_up" from="OpcoesDeAjuda/BotaoNao" to="." method="_on_BotaoNao_button_up"]
+[connection signal="button_up" from="BotaoDeAjuda" to="." method="_on_BotaoDeAjuda_button_up"]

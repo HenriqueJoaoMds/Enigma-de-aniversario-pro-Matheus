@@ -9,11 +9,13 @@ var apagando : bool = false
 var opacidade : float = 0.0
 
 var pediuAjuda : bool = false
+var mensagemDeAjudaEstaAparecendo = false
 
 onready var timer : Timer = get_node("Timer")
 onready var mensagemDeErro : Label = get_node("Label2")
 onready var opcoesDeAjuda : Control = get_node("OpcoesDeAjuda")
 onready var mensagemDeAjuda : Label = get_node("MensagemDeAjuda")
+onready var animacoes : AnimationPlayer = get_node("AnimationPlayer")
 
 signal botaoApertado
 signal botaoDeAjudaApertado
@@ -58,16 +60,19 @@ func _on_BotaoDeAjuda_button_up():
 	emit_signal("botaoDeAjudaApertado")
 	
 	if pediuAjuda == false:
-		opcoesDeAjuda.show()
+		if mensagemDeAjudaEstaAparecendo == false:
+			mensagemDeAjudaEstaAparecendo = true
+			animacoes.play("ConfirmarAjuda")
 
 func _on_BotaoNao_button_up():
-	emit_signal("negouAjuda")
-
-	opcoesDeAjuda.hide()
+	if pediuAjuda == false:
+		if animacoes.is_playing() == false:
+			emit_signal("negouAjuda")
+			animacoes.play("AjudaNegada")
+			mensagemDeAjudaEstaAparecendo = false
 
 func _on_BotaoSim_button_up():
-	emit_signal("aceitouAjuda")
-
-	pediuAjuda = true
-	opcoesDeAjuda.queue_free()
-	mensagemDeAjuda.show()
+	if pediuAjuda == false:
+		emit_signal("aceitouAjuda")
+		pediuAjuda = true
+		animacoes.play("AjudaConfirmada")
