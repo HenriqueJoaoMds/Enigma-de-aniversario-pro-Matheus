@@ -8,9 +8,8 @@
 script = ExtResource( 1 )
 
 [node name="Botoes base" parent="." instance=ExtResource( 2 )]
-VaiPra = "res://Fases/Fase 2/Fase 2.tscn"
 Dica = "Sabe como 1 mais 1 é 2? Então..."
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
 NumeroDaFase = "1"
-TextoPrincipal = "11 + 24 = ?"
+TextoPrincipal = "11 + 24 = ???"

@@ -93,12 +93,11 @@ tracks/0/keys = {
 [node name="Botoes base" type="Node2D"]
 script = ExtResource( 1 )
 Resposta = "35"
-VaiPra = "res://GoodEndingScreen.tscn"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 552, 317.875 )
 scale = Vector2( 0.585938, 692.25 )
-z_index = -100
+z_index = -10
 texture = SubResource( 2 )
 
 [node name="Button" type="Button" parent="."]

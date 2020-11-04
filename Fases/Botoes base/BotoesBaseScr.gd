@@ -1,7 +1,6 @@
 extends Node2D
 
 export var Resposta : String
-export var VaiPra : String
 export var Dica : String
 
 var acendendo : bool = false

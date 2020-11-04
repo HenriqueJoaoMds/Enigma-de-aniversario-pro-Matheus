@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Fases/Botoes base/Botoes base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fases/Escrita base/Escrita base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fases/Fase 2/Fase2Scr.gd" type="Script" id=3]
 
-[node name="Node2D" type="Node2D"]
+[node name="Fase 2" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Botoes base" parent="." instance=ExtResource( 1 )]
-Resposta = "bunda"
-Dica = "Qual é o nome do jogo?"
+Resposta = "jooj"
+Dica = "Se você não estiver no modo janela cheia, talvez fique mais fácil de lembrar..."
+
+[node name="Header" parent="." instance=ExtResource( 2 )]
+NumeroDaFase = "2"
+TextoPrincipal = "Qual é o nome desse jogo mesmo?"
